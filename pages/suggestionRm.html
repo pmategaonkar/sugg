@@ -5,7 +5,7 @@
     <h3>{{suggestions.modified}}</h3>
     <h4>{{suggestions.generator}}</h4>
     </div>
-    <div class="row"ng-repeat="x in suggestions.items" >
+    <div class="row">
         <div class="col-lg-2"></div>
         <div class="col-lg-3">
             <div class="potao-img"><img ng-src="{{x.media.m}}" /></div>
@@ -14,10 +14,10 @@
             <h2>{{x.title}}</h2>
             <h4>Published: {{x.published}} </h4>
             <h4>Author: {{x.author}} </h4>
-            <a href= "#/suggestion-readmore" u-sref="sugRm">Read More</a>
-
         </div>
-        <div class="col-lg-2"></div>
+        <div class="col-lg-2">
+            <a href="#/suggestion" u-sref="sug">Back</a>
+        </div>
     </div>
 
 </div>

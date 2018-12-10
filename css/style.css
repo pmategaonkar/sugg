@@ -1261,3 +1261,8 @@ body,html{
     border-radius: 5px;
     box-shadow: 0px 0px 14px -4px;
 }
+.potao-img img {
+    width: 200px;
+    height: 150px;
+    overflow: hidden;
+}

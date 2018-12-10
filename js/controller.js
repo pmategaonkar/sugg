@@ -16,13 +16,18 @@ angular.module('Flicker.controllers', [])
     .controller('ChController', function ($scope, loginOperation) {
         $scope.myDataSource = loginOperation.graph;
     })
+
     .controller('sgController', function ($scope, loginOperation) {
         console.log("hi my suggestion");
         $scope.suggestions = "hi";
         loginOperation.suggestion().success(function (recData) {
             console.log("called");
-                if (recData.success) {
-                    console.log(recData.JSON_CALLBACK.title);
+                if (recData) {
+                    console.log(recData);
+                    $scope.suggestions = recData;
             }
-        })
+        }).error(function () {
+            console.log("Request failed");
+        });
+
     });   
