@@ -17,17 +17,23 @@ angular.module('Flicker.controllers', [])
         $scope.myDataSource = loginOperation.graph;
     })
 
-    .controller('sgController', function ($scope, loginOperation) {
-        console.log("hi my suggestion");
-        $scope.suggestions = "hi";
+    .controller('sgController', function ($scope, $state, loginOperation) {
+        
         loginOperation.suggestion().success(function (recData) {
-            console.log("called");
-                if (recData) {
-                    console.log(recData);
+            if (recData) {
+                    //console.log(recData);
                     $scope.suggestions = recData;
             }
         }).error(function () {
             console.log("Request failed");
-        });
+            });
 
+        $scope.singleSg = function (index) {
+            console.log(index);
+            $scope.singleRm = $scope.suggestions.items[index];
+            console.log($scope.singleRm);
+            $state.go('sugRm');
+        }
+
+        
     });   
