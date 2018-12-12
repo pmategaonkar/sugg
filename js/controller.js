@@ -22,18 +22,32 @@ angular.module('Flicker.controllers', [])
         loginOperation.suggestion().success(function (recData) {
             if (recData) {
                     //console.log(recData);
-                    $scope.suggestions = recData;
+                $scope.suggestions = recData;
+                $scope.singleSg = function (index) {
+                    console.log(index);
+                    window.localStorage.setItem("lastname", index);
+                    $state.go('sugRm');
+                }
             }
         }).error(function () {
             console.log("Request failed");
             });
 
-        $scope.singleSg = function (index) {
-            console.log(index);
-            $scope.singleRm = $scope.suggestions.items[index];
-            console.log($scope.singleRm);
-            $state.go('sugRm');
-        }
-
+          
+    })
+    .controller('sgRmController', function ($scope, loginOperation) {
+     
+        loginOperation.suggestion().success(function (recData) {
+            if (recData) {
+                //var i = sessionStorage.getItem("curentSug");
+                //console.log(i);
+                $scope.singleRm = recData.items[11];
+                }
+                }).error(function () {
+            console.log("Request failed");
+        });
+    
         
+
+
     });   
